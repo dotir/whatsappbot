@@ -52,10 +52,17 @@ const flowPrincipal = addKeyword(['hola', 'ole', 'alo'])
     .addAnswer('🙌 Hola bienvenido a IComputec')
     .addAnswer(
         [
-            'te comparto los siguientes links de interes:',
+            'Reparamos laptops y computadoras todas las marcas, todos los modelos. vendemos accesorios para laptops y pc recuperación de datos.',
+            'Servicios en Nuestras Tiendas:',
+            '-Reparacion de Laptops y PC',
+            '-Mantenimiento Fisico',
+            '-Formateo e Instalacion',
+            'Te comparto los siguientes links de contacto para mayor informacion:',
             '👉 *Facebook* https://www.facebook.com/icomputec',
             '👉 *Tiktok*  https://www.tiktok.com/@icomputec',
             '👉 *Instagram* https://www.instagram.com/icomputec/',
+            '👉 *Pagina Web* https://icomputec.com/',
+
         ],
         null,
         null,
