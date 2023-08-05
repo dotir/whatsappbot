@@ -52,10 +52,10 @@ const flowPrincipal = addKeyword(['hola', 'ole', 'alo'])
     .addAnswer('🙌 Hola bienvenido a IComputec')
     .addAnswer(
         [
-            'te comparto los siguientes links de interes sobre el proyecto',
-            '👉 *doc* para ver la documentación',
-            '👉 *gracias*  para ver la lista de videos',
-            '👉 *discord* unirte al discord',
+            'te comparto los siguientes links de interes:',
+            '👉 *Facebook* https://www.facebook.com/icomputec',
+            '👉 *Tiktok*  https://www.tiktok.com/@icomputec',
+            '👉 *Instagram* https://www.instagram.com/icomputec/',
         ],
         null,
         null,
