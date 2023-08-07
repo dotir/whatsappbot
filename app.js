@@ -114,31 +114,25 @@ const flowPrincipal = addKeyword(['hola', 'consulta', 'buenas'])
         console.log('Mensaje entrante: ', ctx.body);
         switch (ctx.body) {
             case '1':
-            console.log(['Puede traer su equipo a nuestra tienda para hacele un diagnostico y indicarle la mejor solución,'+
-            'lo esperamos en nuestra tienda: Octavio Muñoz Najar 221 Segundo Piso:  Tienda 214 - Galerias NOVA CENTER 📌']);
-            break;
+                return endFlow({body:'Puede traer su equipo a nuestra tienda para hacele un diagnostico y indicarle la mejor solución,'+
+                'lo esperamos en nuestra tienda: Octavio Muñoz Najar 221 Segundo Piso:  Tienda 214 - Galerias NOVA CENTER 📌'})
             case '2':
-            console.log(['Desde 60 soles para laptop dependiendo del modelo de su equipo y desde 50 soles para CPU. Utilizamos pasta térmica de marca thermaltake, corsarir, '+
-            'cooler master. El mantenimiento consiste en limpieza interna y externa del equipo, limpieza '+
-            'del sistema de enfriamiento, limpieza del ventilador, cambio de pasta al procesador y tarjeta de video',
-            'Puede traer su equipo a nuestra tienda: Octavio Muñoz Najar 221 Segundo Piso:  Tienda 214 - Galerias NOVA CENTER 📌']);
-            break;
-            
+                return endFlow({body:'Desde 60 soles para laptop dependiendo del modelo de su equipo y desde 50 soles para CPU. Utilizamos pasta térmica de marca thermaltake, corsarir, '+
+                'cooler master. El mantenimiento consiste en limpieza interna y externa del equipo, limpieza '+
+                'del sistema de enfriamiento, limpieza del ventilador, cambio de pasta al procesador y tarjeta de video',
+                'Puede traer su equipo a nuestra tienda: Octavio Muñoz Najar 221 Segundo Piso:  Tienda 214 - Galerias NOVA CENTER 📌'})
             case '3':
-                console.log(['Si, podemos ayudarte', 'Puede traer su equipo a nuestra tienda: Octavio Muñoz Najar 221 Segundo Piso:  Tienda 214 - Galerias NOVA CENTER 📌']);
-                break;
+                return endFlow({body:'Si, podemos ayudarte', 'Puede traer su equipo a nuestra tienda: Octavio Muñoz Najar 221 Segundo Piso:  Tienda 214 - Galerias NOVA CENTER 📌'})
             case '4':
-                console.log(['El servicio de recuperación:'+
+                return endFlow({body:'El servicio de recuperación:'+
                 '-Se realiza un diagnostico el cual tiene un costo de S/20.00 en el cual se verifica si es posible o no recuperar la información,' +
                 ' en el caso  de que se pudiera recuperar la información, tendria un costo desde los S/100.00 dependiendo a la cantidad de datos.',
-                'Puede traer su equipo a nuestra tienda: Octavio Muñoz Najar 221 Segundo Piso:  Tienda 214 - Galerias NOVA CENTER 📌']);
-                break;
+                'Puede traer su equipo a nuestra tienda: Octavio Muñoz Najar 221 Segundo Piso:  Tienda 214 - Galerias NOVA CENTER 📌'})
             case '5':
-                console.log('Si, te podemos ayudar. Nosotros repotenciamos y te podemos asesorar con lo mejor para su equipo', 'para mayor información' +
-                'te recomendamos acercarte a nuestra tienda: Octavio Muñoz Najar 221 Segundo Piso:  Tienda 214 - Galerias NOVA CENTER 📌')
-                break;
+                return endFlow({body:'Si, te podemos ayudar. Nosotros repotenciamos y te podemos asesorar con lo mejor para su equipo', 'para mayor información' +
+                'te recomendamos acercarte a nuestra tienda: Octavio Muñoz Najar 221 Segundo Piso:  Tienda 214 - Galerias NOVA CENTER 📌'})
             default:
-            console.log('Podria indicarnos su consulta.', 'En breve nuestro personal le atenderá');
+                return endFlow({body:'Podria indicarnos su consulta.', 'En breve nuestro personal le atenderá'})
         }
     })
 
