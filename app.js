@@ -110,7 +110,7 @@ const flowPrincipal = addKeyword(['hola', 'consulta', 'buenas'])
                 null,
                 [flowPago,flowCuentas,flowHorario,flowDireccion]
                 )
-    .addAnswer('Escriba la opción del servicio que desea', {capture:true}, async (ctx,{flowDynamic,endFlow}) => {
+    .addAnswer('Escriba la opción del servicio que desea', {capture:true, buttons: [{ body: '❌ Cancelar solicitud' }]}, async (ctx,{flowDynamic,endFlow}) => {
         console.log('Mensaje entrante: ', ctx.body);
         switch (ctx.body) {
             case '1':
