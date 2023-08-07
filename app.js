@@ -125,27 +125,24 @@ const flowDireccion = addKeyword(['ubicacion', 'direccion', 'ubica'])
     
     'Saludos cordiales!')
 const flowPrincipal = addKeyword(['hola', 'consulta', 'buenas'])
-    .addAnswer(['🙌 Hola, bienvenido a IComputec', '¿Cómo podemos ayudarte?'])
-    .addAnswer(
-        [
-            'Reparamos laptops y computadoras de todas las marcas, todos los modelos. Vendemos accesorios para laptops y pc, recuperación de datos.',
-            'Servicios en Nuestras Tiendas:',
-            '1. Reparación de Laptops y PC',
-            '2. Mantenimiento Físico',
-            '3. Formateo e Instalación de programas',
-            '4. Recuperación de datos',
-            '5. Repotenciación',
-            '6. Otro',
-            'Te comparto los siguientes links de contacto para mayor información:',
-            '👉 *Facebook* https://www.facebook.com/icomputec',
-            '👉 *Tiktok*  https://www.tiktok.com/@icomputec',
-            '👉 *Instagram* https://www.instagram.com/icomputec/',
-            '👉 *Pagina Web* https://icomputec.com/',
-        ],
-        null,
-        null,
-        [flowOptionOne, flowOptionTwo, flowOptionThree, flowOptionFour, flowOptionFive, flowOptionSix,flowPago,flowCuentas,flowHorario,flowDireccion] 
-    )  
+    .addAnswer(['🙌 Hola, bienvenido a IComputec', '¿Cómo podemos ayudarte?',
+                'Reparamos laptops y computadoras de todas las marcas, todos los modelos. Vendemos accesorios para laptops y pc, recuperación de datos.',
+                'Servicios en Nuestras Tiendas:',
+                '1. Reparación de Laptops y PC',
+                '2. Mantenimiento Físico',
+                '3. Formateo e Instalación de programas',
+                '4. Recuperación de datos',
+                '5. Repotenciación',
+                '6. Otro',
+                'Te comparto los siguientes links de contacto para mayor información:',
+                '👉 *Facebook* https://www.facebook.com/icomputec',
+                '👉 *Tiktok*  https://www.tiktok.com/@icomputec',
+                '👉 *Instagram* https://www.instagram.com/icomputec/',
+                '👉 *Pagina Web* https://icomputec.com/'],
+                null,
+                null,
+                [flowOptionOne, flowOptionTwo, flowOptionThree, flowOptionFour, flowOptionFive, flowOptionSix,flowPago,flowCuentas,flowHorario,flowDireccion]
+                )
 
 const main = async () => {
     const adapterDB = new MockAdapter()
