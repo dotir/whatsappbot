@@ -4,51 +4,6 @@ const QRPortalWeb = require('@bot-whatsapp/portal')
 const BaileysProvider = require('@bot-whatsapp/provider/baileys')
 const MockAdapter = require('@bot-whatsapp/database/mock')
 
-/* const flowSecundario = addKeyword(['2', 'siguiente']).addAnswer(['📄 Aquí tenemos el flujo secundario']) */
-
-/* const flowDocs = addKeyword(['doc', 'documentacion', 'documentación']).addAnswer(
-    [
-        '📄 Aquí encontras las documentación recuerda que puedes mejorarla',
-        'https://bot-whatsapp.netlify.app/',
-        '\n*2* Para siguiente paso.',
-    ],
-    null,
-    null,
-    [flowSecundario]
-) */
-
-/* const flowTuto = addKeyword(['tutorial', 'tuto']).addAnswer(
-    [
-        '🙌 Aquí encontras un ejemplo rapido',
-        'https://bot-whatsapp.netlify.app/docs/example/',
-        '\n*2* Para siguiente paso.',
-    ],
-    null,
-    null,
-    [flowSecundario]
-) */
-
-/* const flowGracias = addKeyword(['gracias', 'grac']).addAnswer(
-    [
-        '🚀 Puedes aportar tu granito de arena a este proyecto',
-        '[*opencollective*] https://opencollective.com/bot-whatsapp',
-        '[*buymeacoffee*] https://www.buymeacoffee.com/leifermendez',
-        '[*patreon*] https://www.patreon.com/leifermendez',
-        '\n*2* Para siguiente paso.',
-    ],
-    null,
-    null,
-    [flowSecundario]
-) */
-
-/* const flowDiscord = addKeyword(['discord']).addAnswer(
-    ['🤪 Únete al discord', 'https://link.codigoencasa.com/DISCORD', '\n*2* Para siguiente paso.'],
-    null,
-    null,
-    [flowSecundario]
-    ) */
-
-
 const flowOptionOne = addKeyword(['1'])
 .addAnswer([
     'Puede traer su equipo a nuestra tienda para hacerle un diagnóstico y ' +
@@ -82,30 +37,6 @@ const flowOptionSix = addKeyword(['6'])
         'Podria indicarnos su consulta.', 'En breve nuestro personal le atenderá.'
     ]);
 
-
-const flowPrincipal = addKeyword(['hola', 'consulta', 'buenas'])
-    .addAnswer(['🙌 Hola, bienvenido a IComputec', '¿Cómo podemos ayudarte?'])
-    .addAnswer(
-        [
-            'Reparamos laptops y computadoras de todas las marcas, todos los modelos. Vendemos accesorios para laptops y pc, recuperación de datos.',
-            'Servicios en Nuestras Tiendas:',
-            '1. Reparación de Laptops y PC',
-            '2. Mantenimiento Físico',
-            '3. Formateo e Instalación de programas',
-            '4. Recuperación de datos',
-            '5. Repotenciación',
-            '6. Otro',
-            'Te comparto los siguientes links de contacto para mayor información:',
-            '👉 *Facebook* https://www.facebook.com/icomputec',
-            '👉 *Tiktok*  https://www.tiktok.com/@icomputec',
-            '👉 *Instagram* https://www.instagram.com/icomputec/',
-            '👉 *Pagina Web* https://icomputec.com/',
-        ],
-        null,
-        null,
-        [flowOptionOne, flowOptionTwo, flowOptionThree, flowOptionFour, flowOptionFive, flowOptionSix] 
-    )
-    
 const flowPago = addKeyword(['tarjeta', 'efectivo', 'pago', 'pagos', 'transferencia'])
     .addAnswer('Aceptamos pagos en efectivo, todas las tarjetas con un 5% de recargo al total del servicio, billeteras digitales como Yape y Plin o transferencias bancarias')
 
@@ -193,10 +124,32 @@ const flowDireccion = addKeyword(['ubicacion', 'direccion', 'ubica'])
      '___________\n'+
     
     'Saludos cordiales!')
+const flowPrincipal = addKeyword(['hola', 'consulta', 'buenas'])
+    .addAnswer(['🙌 Hola, bienvenido a IComputec', '¿Cómo podemos ayudarte?'])
+    .addAnswer(
+        [
+            'Reparamos laptops y computadoras de todas las marcas, todos los modelos. Vendemos accesorios para laptops y pc, recuperación de datos.',
+            'Servicios en Nuestras Tiendas:',
+            '1. Reparación de Laptops y PC',
+            '2. Mantenimiento Físico',
+            '3. Formateo e Instalación de programas',
+            '4. Recuperación de datos',
+            '5. Repotenciación',
+            '6. Otro',
+            'Te comparto los siguientes links de contacto para mayor información:',
+            '👉 *Facebook* https://www.facebook.com/icomputec',
+            '👉 *Tiktok*  https://www.tiktok.com/@icomputec',
+            '👉 *Instagram* https://www.instagram.com/icomputec/',
+            '👉 *Pagina Web* https://icomputec.com/',
+        ],
+        null,
+        null,
+        [flowOptionOne, flowOptionTwo, flowOptionThree, flowOptionFour, flowOptionFive, flowOptionSix,flowPago,flowCuentas,flowHorario,flowDireccion] 
+    )  
 
 const main = async () => {
     const adapterDB = new MockAdapter()
-    const adapterFlow = createFlow([flowPrincipal, flowOptionOne, flowOptionTwo, flowOptionThree, flowOptionFour, flowOptionFive, flowOptionSix])
+    const adapterFlow = createFlow([flowPrincipal, flowOptionOne, flowOptionTwo, flowOptionThree, flowOptionFour, flowOptionFive, flowOptionSix,flowPago,flowCuentas,flowHorario,flowDireccion])
     const adapterProvider = createProvider(BaileysProvider)
 
     createBot({
