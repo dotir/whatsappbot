@@ -1,41 +1,8 @@
-const { createBot, createProvider, createFlow, addKeyword } = require('@bot-whatsapp/bot')
+const { createBot, createProvider, createFlow, addKeyword, addChild } = require('@bot-whatsapp/bot')
 
 const QRPortalWeb = require('@bot-whatsapp/portal')
 const BaileysProvider = require('@bot-whatsapp/provider/baileys')
 const MockAdapter = require('@bot-whatsapp/database/mock')
-
-const flowOptionOne = addKeyword(['1'])
-.addAnswer([
-    'Puede traer su equipo a nuestra tienda para hacerle un diagnóstico y ' +
-    'indicarle la mejor solución. Lo esperamos en nuestra tienda: Octavio Muñoz Najar 221 ' +
-    'Segundo Piso: Tienda 214 - Galerias NOVA CENTER 📌'
-]);
-
-const flowOptionTwo = addKeyword(['2'])
-    .addAnswer([
-        'Desde 60 soles para laptop dependiendo del modelo de su equipo y desde 50 soles para CPU.' +
-        'Utilizamos pasta térmica de marca thermaltake, corsarir, cooler master.'
-    ]);
-
-const flowOptionThree = addKeyword(['3'])
-    .addAnswer([
-        'Si, podemos ayudarte. Puede traer su equipo a nuestra tienda.'
-    ]);
-
-const flowOptionFour = addKeyword(['4'])
-    .addAnswer([
-        'El servicio de recuperación: Se realiza un diagnostico el cual tiene un costo de S/20.00...'
-    ]);
-
-const flowOptionFive = addKeyword(['5'])
-    .addAnswer([
-        'Si, te podemos ayudar. Nosotros repotenciamos y te podemos asesorar con lo mejor para su equipo...'
-    ]);
-
-const flowOptionSix = addKeyword(['6'])
-    .addAnswer([
-        'Podria indicarnos su consulta.', 'En breve nuestro personal le atenderá.'
-    ]);
 
 const flowPago = addKeyword(['tarjeta', 'efectivo', 'pago', 'pagos', 'transferencia'])
     .addAnswer('Aceptamos pagos en efectivo, todas las tarjetas con un 5% de recargo al total del servicio, billeteras digitales como Yape y Plin o transferencias bancarias')
@@ -141,12 +108,43 @@ const flowPrincipal = addKeyword(['hola', 'consulta', 'buenas'])
                 '👉 *Pagina Web* https://icomputec.com/'],
                 null,
                 null,
-                [flowOptionOne, flowOptionTwo, flowOptionThree, flowOptionFour, flowOptionFive, flowOptionSix,flowPago,flowCuentas,flowHorario,flowDireccion]
+                [flowPago,flowCuentas,flowHorario,flowDireccion]
                 )
+    .addAnswer('Escriba la opción del servicio que desea', {capture:true}, async (ctx,{flowDynamic,endFlow}) => {
+        console.log('Mensaje entrante: ', ctx.body);
+        switch (ctx.body) {
+            case '1':
+            console.log(['Puede traer su equipo a nuestra tienda para hacele un diagnostico y indicarle la mejor solución,'+
+            'lo esperamos en nuestra tienda: Octavio Muñoz Najar 221 Segundo Piso:  Tienda 214 - Galerias NOVA CENTER 📌']);
+            break;
+            case '2':
+            console.log(['Desde 60 soles para laptop dependiendo del modelo de su equipo y desde 50 soles para CPU. Utilizamos pasta térmica de marca thermaltake, corsarir, '+
+            'cooler master. El mantenimiento consiste en limpieza interna y externa del equipo, limpieza '+
+            'del sistema de enfriamiento, limpieza del ventilador, cambio de pasta al procesador y tarjeta de video',
+            'Puede traer su equipo a nuestra tienda: Octavio Muñoz Najar 221 Segundo Piso:  Tienda 214 - Galerias NOVA CENTER 📌']);
+            break;
+            
+            case '3':
+                console.log(['Si, podemos ayudarte', 'Puede traer su equipo a nuestra tienda: Octavio Muñoz Najar 221 Segundo Piso:  Tienda 214 - Galerias NOVA CENTER 📌']);
+                break;
+            case '4':
+                console.log(['El servicio de recuperación:'+
+                '-Se realiza un diagnostico el cual tiene un costo de S/20.00 en el cual se verifica si es posible o no recuperar la información,' +
+                ' en el caso  de que se pudiera recuperar la información, tendria un costo desde los S/100.00 dependiendo a la cantidad de datos.',
+                'Puede traer su equipo a nuestra tienda: Octavio Muñoz Najar 221 Segundo Piso:  Tienda 214 - Galerias NOVA CENTER 📌']);
+                break;
+            case '5':
+                console.log('Si, te podemos ayudar. Nosotros repotenciamos y te podemos asesorar con lo mejor para su equipo', 'para mayor información' +
+                'te recomendamos acercarte a nuestra tienda: Octavio Muñoz Najar 221 Segundo Piso:  Tienda 214 - Galerias NOVA CENTER 📌')
+                break;
+            default:
+            console.log('Podria indicarnos su consulta.', 'En breve nuestro personal le atenderá');
+        }
+    })
 
 const main = async () => {
     const adapterDB = new MockAdapter()
-    const adapterFlow = createFlow([flowPrincipal, flowOptionOne, flowOptionTwo, flowOptionThree, flowOptionFour, flowOptionFive, flowOptionSix,flowPago,flowCuentas,flowHorario,flowDireccion])
+    const adapterFlow = createFlow([flowPrincipal,flowPago,flowCuentas,flowHorario,flowDireccion])
     const adapterProvider = createProvider(BaileysProvider)
 
     createBot({
