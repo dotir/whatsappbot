@@ -5,6 +5,10 @@ const QRPortalWeb = require('@bot-whatsapp/portal')
 const BaileysProvider = require('@bot-whatsapp/provider/baileys')
 const MockAdapter = require('@bot-whatsapp/database/mock')
 
+const flowString = addKeyword('boton').addAnswer('Este mensaje envia tres botones', {
+    buttons: [{ body: 'Boton 1' }, { body: 'Boton 2' }, { body: 'Boton 3' }],
+})
+
 const flowPago = addKeyword(['tarjeta', 'efectivo', 'pago', 'pagos', 'transferencia'])
     .addAnswer('Aceptamos pagos en efectivo, todas las tarjetas con un 5% de recargo al total del servicio, billeteras digitales como Yape y Plin o transferencias bancarias')
 
@@ -103,7 +107,7 @@ const flowPrincipal = addKeyword(['hola', 'consulta', 'buenas'])
                 '6. Otro'],
                 null,
                 null,
-                [flowPago,flowCuentas,flowHorario,flowDireccion]
+                [flowPago,flowCuentas,flowHorario,flowDireccion,flowString]
                 )
     .addAnswer(['Escriba la opción del servicio que desea'], {capture:true}, async (ctx,{flowDynamic,endFlow}) => {
         console.log('Mensaje entrante: ', ctx.body);
@@ -131,7 +135,7 @@ const flowPrincipal = addKeyword(['hola', 'consulta', 'buenas'])
 
 const main = async () => {
     const adapterDB = new MockAdapter()
-    const adapterFlow = createFlow([flowPrincipal,flowPago,flowCuentas,flowHorario,flowDireccion])
+    const adapterFlow = createFlow([flowPrincipal,flowPago,flowCuentas,flowHorario,flowDireccion,flowString])
     const adapterProvider = createProvider(BaileysProvider)
 
     createBot({
