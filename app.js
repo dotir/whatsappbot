@@ -1,3 +1,4 @@
+
 const { createBot, createProvider, createFlow, addKeyword} = require('@bot-whatsapp/bot')
 
 const QRPortalWeb = require('@bot-whatsapp/portal')
@@ -42,7 +43,7 @@ const flowHorario = addKeyword(['horario', 'atencion','atienden','hora', 'atendi
     '🕙 2:00 pm - 6:00 pm 🕕\n'+
     'Domingo: Cerrado')
 
-const flowDireccion = addKeyword(['ubicacion', 'direccion', 'ubica'])
+const flowDireccion = addKeyword(['ubicacion', 'direccion', 'ubica', 'ubican', 'donde se encuentran'])
     .addAnswer('¡Hola!😊\n'+
     'Bienvenid@ a ICOMPUTEC.COM👨🏻‍💻\n'+
     '¡Muchas gracias por preferirnos!\n '+
@@ -50,7 +51,7 @@ const flowDireccion = addKeyword(['ubicacion', 'direccion', 'ubica'])
     
         '🟡 VENTA DE LAPTOS 🟡\n'+
     'ACCESORIOS y COMPUTADORAS\n'+
-    '___________'+
+    '___________\n'+
       '⛔ SEDE PRINCIPAL ⛔\n'+
     'https://maps.app.goo.gl/3FXcYqY3VME2FfKf6\n'+      
     
@@ -69,7 +70,7 @@ const flowDireccion = addKeyword(['ubicacion', 'direccion', 'ubica'])
     'https://www.facebook.com/icomputec/\n'+
     '__________\n'+
     '⚠️ HORÁRIO DE ATENCIÓN ⚠️\n'+
-    'Lunes a Viernes: 🕙 9:30 am - 1:30 pm 🕕\n'+
+    'Lunes a Viernes:\n 🕙 9:30 am - 1:30 pm 🕕\n'+
     '🕙 2:00 pm - 7:00 pm 🕕\n'+
     'Sábados: 🕙 10:00 am - 1:30 pm 🕑\n'+
     '🕙 2:00 pm - 6:00 pm 🕕\n'+
@@ -91,25 +92,19 @@ const flowDireccion = addKeyword(['ubicacion', 'direccion', 'ubica'])
      '___________\n'+
     
     'Saludos cordiales!')
-const flowPrincipal = addKeyword(['hola', 'consulta', 'buenas'])
+const flowPrincipal = addKeyword(['hola', 'consulta', 'buenas', '⬅️ Volver al Inicio'])
     .addAnswer(['🙌 Hola, bienvenido a IComputec', '¿Cómo podemos ayudarte?',
-                'Reparamos laptops y computadoras de todas las marcas, todos los modelos. Vendemos accesorios para laptops y pc, recuperación de datos.',
-                'Servicios en Nuestras Tiendas:',
+                'Puedes consultar por nuestros Servicios:',
                 '1. Reparación de Laptops y PC',
                 '2. Mantenimiento Físico',
                 '3. Formateo e Instalación de programas',
                 '4. Recuperación de datos',
                 '5. Repotenciación',
                 '6. Otro',
-                'Te comparto los siguientes links de contacto para mayor información:',
-                '👉 *Facebook* https://www.facebook.com/icomputec',
-                '👉 *Tiktok*  https://www.tiktok.com/@icomputec',
-                '👉 *Instagram* https://www.instagram.com/icomputec/',
-                '👉 *Pagina Web* https://icomputec.com/'],
                 null,
                 null,
                 [flowPago,flowCuentas,flowHorario,flowDireccion]
-                )
+                ])
     .addAnswer(['Escriba la opción del servicio que desea'], {capture:true}, async (ctx,{flowDynamic,endFlow}) => {
         console.log('Mensaje entrante: ', ctx.body);
         switch (ctx.body) {
