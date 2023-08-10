@@ -115,10 +115,10 @@ const flowPrincipal = addKeyword(['hola', 'consulta', 'buenas'])
                 return flowDynamic({body:'😊 Si, desde 60 soles para laptop dependiendo del modelo de su equipo y desde 50 soles para CPU.💻\n Utilizamos pasta térmica de marca thermaltake, corsarir, cooler master.\n El mantenimiento consiste en limpieza interna y externa del equipo, limpieza del sistema de enfriamiento, limpieza del ventilador, cambio de pasta al procesador y tarjeta de video.\n'
                 })
             case '3':
-                return flowDynamic({body:'Si, podemos ayudarte😊\n Puede traer su equipo a nuestra tienda: ✅Octavio Muñoz Najar 221 Segundo Piso:  Tienda 214 - Galerias NOVA CENTER 📌'
+                return flowDynamic({body:'Si, podemos ayudarte😊\n 🙌 Puede traer su equipo a nuestra tienda: ✅Octavio Muñoz Najar 221 Segundo Piso:  Tienda 214 - Galerias NOVA CENTER 📌'
                 })
             case '4':
-                return flowDynamic({body:'El servicio de recuperación: -Se realiza un diagnostico el cual tiene un costo de S/20.00 en el cual se verifica si es posible o no recuperar la información, en el caso  de que se pudiera recuperar la información, tendria un costo desde los S/100.00 dependiendo a la cantidad de datos.\n Puede traer su equipo a nuestra tienda: Octavio Muñoz Najar 221 Segundo Piso:  Tienda 214 - Galerias NOVA CENTER 📌'
+                return flowDynamic({body:'El servicio de recuperación:\n ✅Se realiza un diagnostico el cual tiene un costo de S/20.00 donde se verifica si es posible o no recuperar la información, en el caso  de que se pudiera recuperar la información, tendria un costo desde los S/100.00 dependiendo a la cantidad de datos.\n 🙌 Puede traer su equipo a nuestra tienda: ✅ Octavio Muñoz Najar 221 Segundo Piso:  Tienda 214 - Galerias NOVA CENTER 📌'
                 })
             case '5':
                 return flowDynamic({body:'Si, te podemos ayudar😊. Nosotros repotenciamos y te podemos asesorar con lo mejor para su equipo 💻\n para mayor información te recomendamos acercarte a nuestra tienda: ✅ Octavio Muñoz Najar 221 Segundo Piso:  Tienda 214 - Galerias NOVA CENTER 📌'
