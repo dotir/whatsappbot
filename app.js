@@ -93,39 +93,39 @@ const flowDireccion = addKeyword(['ubicacion', 'direccion', 'ubica', 'ubican', '
     
     'Saludos cordiales!')
 const flowPrincipal = addKeyword(['hola', 'consulta', 'buenas', '⬅️ Volver al Inicio'])
-    .addAnswer(['🙌 Hola, bienvenido a IComputec', '¿Cómo podemos ayudarte?',
-                'Puedes consultar por nuestros Servicios:',
+    .addAnswer(['🙌 Hola, bienvenido a IComputec 😊', '¿Cómo podemos ayudarte?',
+                'Puedes consultar por nuestros servicios:',
                 '1. Reparación de Laptops y PC',
                 '2. Mantenimiento Físico',
                 '3. Formateo e Instalación de programas',
                 '4. Recuperación de datos',
                 '5. Repotenciación',
-                '6. Otro',
+                '6. Otro'],
                 null,
                 null,
-                [flowPago,flowCuentas,flowHorario,flowDireccion],
-                ])
+                [flowPago,flowCuentas,flowHorario,flowDireccion]
+                )
     .addAnswer(['Escriba la opción del servicio que desea'], {capture:true}, async (ctx,{flowDynamic,endFlow}) => {
         console.log('Mensaje entrante: ', ctx.body);
         switch (ctx.body) {
             case '1':
-                return endFlow({body:'Puede traer su equipo a nuestra tienda para hacele un diagnostico y indicarle la mejor solución, lo esperamos en nuestra tienda: Octavio Muñoz Najar 221 Segundo Piso:  Tienda 214 - Galerias NOVA CENTER 📌',
-                buttons:[{body:'⬅️ Volver al Inicio' }] })
+                return flowDynamic({body:'Puede traer su equipo a nuestra tienda para hacele un diagnostico y indicarle la mejor solución, lo esperamos en nuestra tienda: Octavio Muñoz Najar 221 Segundo Piso:  Tienda 214 - Galerias NOVA CENTER 📌'
+                ,  buttons:[{body:'⬅️ Volver al Inicio' }]})
             case '2':
-                return endFlow({body:'Desde 60 soles para laptop dependiendo del modelo de su equipo y desde 50 soles para CPU. Utilizamos pasta térmica de marca thermaltake, corsarir, cooler master. El mantenimiento consiste en limpieza interna y externa del equipo, limpieza del sistema de enfriamiento, limpieza del ventilador, cambio de pasta al procesador y tarjeta de video Puede traer su equipo a nuestra tienda: Octavio Muñoz Najar 221 Segundo Piso:  Tienda 214 - Galerias NOVA CENTER 📌'
-                , buttons:[{body:'⬅️ Volver al Inicio' }]})
+                return flowDynamic({body:'Desde 60 soles para laptop dependiendo del modelo de su equipo y desde 50 soles para CPU. Utilizamos pasta térmica de marca thermaltake, corsarir, cooler master. El mantenimiento consiste en limpieza interna y externa del equipo, limpieza del sistema de enfriamiento, limpieza del ventilador, cambio de pasta al procesador y tarjeta de video Puede traer su equipo a nuestra tienda: Octavio Muñoz Najar 221 Segundo Piso:  Tienda 214 - Galerias NOVA CENTER 📌'
+                ,  buttons:[{body:'⬅️ Volver al Inicio' }]})
             case '3':
-                return endFlow({body:'Si, podemos ayudarte\n Puede traer su equipo a nuestra tienda: Octavio Muñoz Najar 221 Segundo Piso:  Tienda 214 - Galerias NOVA CENTER 📌'
-                , buttons:[{body:'⬅️ Volver al Inicio' }]})
+                return flowDynamic({body:'Si, podemos ayudarte\n Puede traer su equipo a nuestra tienda: Octavio Muñoz Najar 221 Segundo Piso:  Tienda 214 - Galerias NOVA CENTER 📌'
+                ,  buttons:[{body:'⬅️ Volver al Inicio' }]})
             case '4':
-                return endFlow({body:'El servicio de recuperación: -Se realiza un diagnostico el cual tiene un costo de S/20.00 en el cual se verifica si es posible o no recuperar la información, en el caso  de que se pudiera recuperar la información, tendria un costo desde los S/100.00 dependiendo a la cantidad de datos.\n Puede traer su equipo a nuestra tienda: Octavio Muñoz Najar 221 Segundo Piso:  Tienda 214 - Galerias NOVA CENTER 📌'
-                , buttons:[{body:'⬅️ Volver al Inicio' }]})
+                return flowDynamic({body:'El servicio de recuperación: -Se realiza un diagnostico el cual tiene un costo de S/20.00 en el cual se verifica si es posible o no recuperar la información, en el caso  de que se pudiera recuperar la información, tendria un costo desde los S/100.00 dependiendo a la cantidad de datos.\n Puede traer su equipo a nuestra tienda: Octavio Muñoz Najar 221 Segundo Piso:  Tienda 214 - Galerias NOVA CENTER 📌'
+                ,  buttons:[{body:'⬅️ Volver al Inicio' }]})
             case '5':
-                return endFlow({body:'Si, te podemos ayudar. Nosotros repotenciamos y te podemos asesorar con lo mejor para su equipo\n para mayor información te recomendamos acercarte a nuestra tienda: Octavio Muñoz Najar 221 Segundo Piso:  Tienda 214 - Galerias NOVA CENTER 📌'
-                , buttons:[{body:'⬅️ Volver al Inicio' }]})
+                return flowDynamic({body:'Si, te podemos ayudar. Nosotros repotenciamos y te podemos asesorar con lo mejor para su equipo\n para mayor información te recomendamos acercarte a nuestra tienda: Octavio Muñoz Najar 221 Segundo Piso:  Tienda 214 - Galerias NOVA CENTER 📌'
+                ,  buttons:[{body:'⬅️ Volver al Inicio' }]})
             default:
                 return endFlow({body:'Podria indicarnos su consulta.\n'+ 'En breve nuestro personal le atenderá'
-                , buttons:[{body:'⬅️ Volver al Inicio' }]})
+                ,  buttons:[{body:'⬅️ Volver al Inicio' }]})
         }
     })
 
